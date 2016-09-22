@@ -22,11 +22,11 @@ class Words {
 //: ### variables the same type? If not, why?
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: No they're not the same; variables ending with an exclamation indicate strictly unwrapped optional variables (can't be 'nil') whereas variables ending with a question mark can be nil.
 
 
 //: ## Q2: Variable Types and Function Types
-    func arePalindromes(_ words: [String]) -> Bool {
+    class func arePalindromes(_ words: [String]) -> Bool {
         let reversedWords = words.map() {String($0.characters.reversed())}
         let numElements = words.count
         
@@ -35,18 +35,18 @@ class Words {
                 return false
             }
         }
+        return true
     }
 //: ### Why does the compiler dislike the **for loop**? Fix it.
 //: ### What else is wrong with this function? You may have to refer to (but **not**
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
-
+//: The function never returns true and the function isn't static (it should be since it's not being called on an instance). As for the loop, declaring a variable with 'let' makes it an immutable constant.
 
 //: ## Q3: More Functions and Object Initialization
-    class func isAnagram() -> Bool {
-        var countLetters : [Character : Int] //Line X
+    func isAnagram() -> Bool {
+        var countLetters = [Character : Int]()
         var lenA = self.wordA.characters.count
         var lenB = self.wordB.characters.count
         
@@ -81,7 +81,7 @@ class Words {
             }
         }
         
-        return nil
+        return true
     }
 //: ### What is the problem with declaring **countLetters** as we do in **Line X**,
 //: ### and then using it in **Line Y**? Fix it (by only changing **Line X**).
@@ -89,7 +89,7 @@ class Words {
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: Forgot to instantiate 'countLetters' in Line X with '()'. As for the function - it shouldn't be a static function, also it was returning 'nil' instead of 'true'.
     
     
 }
